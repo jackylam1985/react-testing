@@ -4,8 +4,8 @@
   "author": "Jacky Lam",
   "version": "0.0.1",
   "scripts": {
-    "build:dev": "node_modules/.bin/webpack --config webpack/server/webpack.config.dev.js --progress --hide-modules",
-    "start": "npm run build:dev && babel-node -- src/express-server",
+    "build:dev": "node_modules/.bin/webpack --config webpack.config.js --progress --hide-modules",
+    "start": "npm run build:dev && babel-node -- src/server",
     "eslint": "node_modules/eslint/bin/eslint.js --format node_modules/eslint-friendly-formatter --ext .js,.jsx ."
   },
   "engines": {
@@ -38,6 +38,7 @@
     "react-dom": "^16.0.0",
     "react-redux": "^5.0.6",
     "react-router": "^4.2.0",
+    "react-router-config": "^1.0.0-beta.4",
     "react-router-dom": "^4.2.2",
     "redux": "^3.7.2"
   }

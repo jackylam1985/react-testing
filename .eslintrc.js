@@ -1,7 +1,13 @@
 module.exports = {
   parser: 'babel-eslint',
+  parserOptions: {
+    'ecmaFeatures': {
+      'jsx': true
+    },
+  },
   extends: [
     'plugin:lodash/recommended',
+    'plugin:react/recommended',
     'standard',
   ],
   plugins: [
