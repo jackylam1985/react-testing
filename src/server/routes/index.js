@@ -1,5 +1,4 @@
-import * as Express from 'express'
-import * as React from 'react'
+import React from 'react'
 import { renderToString } from 'react-dom/server'
 import { Provider } from 'react-redux'
 import { renderRoutes } from 'react-router-config'

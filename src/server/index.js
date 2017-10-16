@@ -1,9 +1,12 @@
 import express from 'express'
 import routes from './routes'
+import path from 'path'
+import serveStatic from 'serve-static'
 
 // import webpack from 'webpack'
 // import webpackConfig from '../webpack/client/webpack.config.dev'
 
+const publicPath = path.join(__dirname, '..', '..', 'public')
 const app = express()
 
 // const compiler = webpack(webpackConfig)
@@ -13,6 +16,7 @@ const app = express()
 // }))blicPath: webpackConfig.output.publicPath,
 // }))
 
+app.use('/static', serveStatic(publicPath))
 app.use('/', routes)
 
 const port = process.env.PORT || 3000

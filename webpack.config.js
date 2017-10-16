@@ -15,10 +15,12 @@ module.exports = {
     filename: '[name].js',
     chunkFilename: '[name].js',
     publicPath: '/',
-    libraryTarget: 'commonjs',
+    library: '[name]',
+    libraryTarget: 'umd',
+    umdNamedDefine: true,
   },
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
   },
   module: {
     rules: [
@@ -28,6 +30,7 @@ module.exports = {
         include: /src/,
         exclude: /node_modules/,
       },
+      { test: /\.tsx?$/, use: [{ loader: 'ts-loader' }] },
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
@@ -38,9 +41,9 @@ module.exports = {
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       filename: 'vendor.js',
-      minChunks(module) {
-        const context = module.context;
-        return context && context.indexOf('node_modules') >= 0;
+      minChunks (module) {
+        const context = module.context
+        return context && context.indexOf('node_modules') >= 0
       },
     }),
   ],

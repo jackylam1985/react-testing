@@ -1,0 +1,11 @@
+{
+  // Custom rules
+  "rules": {
+    // Always add comma dangle for multi line
+    "trailing-comma": [true, {"multiline": "always", "singleline": "never"}],
+    // Prefer to use const if never reassigned. If any variables in destructuring should be const. See https://eslint.org/docs/rules/prefer-const
+    "prefer-const": [true, {"destructuring": "any"}],
+    // don"t allow var, use let and const instead
+    "no-var-keyword": true
+  }
+}
