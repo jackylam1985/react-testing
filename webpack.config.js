@@ -1,6 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
 const isProd = process.env.NODE_ENV === 'production'
+const _include = require('lodash/include')
 
 module.exports = {
   devtool: isProd
@@ -15,21 +16,13 @@ module.exports = {
     filename: '[name].js',
     chunkFilename: '[name].js',
     publicPath: '/',
-    library: '[name]',
-    libraryTarget: 'umd',
-    umdNamedDefine: true,
+    libraryTarget: 'commonjs2',
   },
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
   },
   module: {
     rules: [
-      {
-        test: /\.(js|jsx)$/,
-        use: 'babel-loader',
-        include: /src/,
-        exclude: /node_modules/,
-      },
       { test: /\.tsx?$/, use: [{ loader: 'ts-loader' }] },
       {
         test: /\.css$/,
@@ -43,7 +36,7 @@ module.exports = {
       filename: 'vendor.js',
       minChunks (module) {
         const context = module.context
-        return context && context.indexOf('node_modules') >= 0
+        return context && _include(context, 'node_modules')
       },
     }),
   ],

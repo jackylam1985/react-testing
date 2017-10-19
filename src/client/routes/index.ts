@@ -7,14 +7,14 @@ export default [
     component: App,
     routes: [
       {
-        path: '/',
-        exact: true,
         component: Home,
+        exact: true,
+        path: '/',
       },
       {
-        path: '/node',
-        exact: true,
         component: Node,
+        exact: true,
+        path: '/node',
       },
     ],
   },

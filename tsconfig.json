@@ -7,18 +7,12 @@
       "es2017",
       "dom"
     ],
-    "allowSyntheticDefaultImports": true,
-    "moduleResolution": "node",
-    "noUnusedParameters": true,
-    "noUnusedLocals": true,
-    "module": "umd",
-    "noEmitOnError": true,
-    "noImplicitAny": true,
-    "skipLibCheck": true,
+    "module": "commonjs",
     "sourceMap": true,
-    "strictNullChecks": true,
     "target": "es5",
-    "outDir": "dist"
+    "outDir": "public",
+    "noImplicitAny": true,
+    "strictNullChecks": true
   },
   "include": [
     "./src/**/*"

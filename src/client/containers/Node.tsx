@@ -4,7 +4,7 @@ class Node extends React.Component {
   render () {
     return (
       <div className="node">
-        Node page
+        Another Dummy page
       </div>
     )
   }

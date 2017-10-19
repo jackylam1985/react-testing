@@ -4,8 +4,8 @@ import { Provider } from 'react-redux'
 import { renderRoutes } from 'react-router-config'
 import { BrowserRouter } from 'react-router-dom'
 
-import routes from './routes'
 import store from './redux/store'
+import routes from './routes'
 
 hydrate(
   <Provider store={store}>

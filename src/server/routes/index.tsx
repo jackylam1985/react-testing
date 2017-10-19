@@ -1,20 +1,22 @@
-import React from 'react'
+import { StaticRouterContext } from 'common'
+import { Request, Response } from 'express'
+import * as React from 'react'
 import { renderToString } from 'react-dom/server'
 import { Provider } from 'react-redux'
 import { renderRoutes } from 'react-router-config'
 import { StaticRouter } from 'react-router-dom'
 
-import routes from '../../client/routes'
 import store from '../../client/redux/store'
+import routes from '../../client/routes'
 
-import _template from 'lodash/template'
-import fs from 'fs'
+import * as fs from 'fs'
+import { template as _template } from 'lodash'
 
 const baseTemplate = fs.readFileSync('./src/index.template.html')
-const template = _template(baseTemplate)
+const template = _template(baseTemplate.toString())
 
-export default (req, res) => {
-  const context = {}
+export default (req: Request, res: Response) => {
+  const context: StaticRouterContext = {}
 
   const content = renderToString(
     <Provider store={store}>
