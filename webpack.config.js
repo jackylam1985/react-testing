@@ -1,7 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
 const isProd = process.env.NODE_ENV === 'production'
-const _include = require('lodash/include')
+const _include = require('lodash/includes')
 
 module.exports = {
   devtool: isProd
