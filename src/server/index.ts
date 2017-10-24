@@ -2,13 +2,14 @@ import * as express from 'express'
 import * as path from 'path'
 import * as serveStatic from 'serve-static'
 
-import routes from './routes'
+import appConfig from '../config/'
+import { isProd } from '../universal/constants'
 import setupDevMiddlewares from './setup/setup-dev-middlewares'
+import ssr from './ssr'
 
 const app = express()
-const port = process.env.PORT || 3000
+const port = appConfig.server.port
 const publicPath = path.join(__dirname, '..', '..', 'build')
-const isProd = process.env.NODE_ENV === 'production'
 
 // Add Development middleware
 if (!isProd) {
@@ -16,7 +17,7 @@ if (!isProd) {
 }
 
 app.use('/static', serveStatic(publicPath))
-app.get('*', routes)
+app.get('*', ssr)
 
 app.listen(port, (error: any) => {
   if (error) {

@@ -7,8 +7,8 @@ import { Store } from 'redux'
 
 declare const module: { hot: any }
 
-import store from './redux/store'
-import routes from './routes'
+import store from '../universal/redux/store'
+import routes from '../universal/routes'
 
 const renderApp = (theStore: Store<{}>) => hydrate(
   <Provider store={theStore}>

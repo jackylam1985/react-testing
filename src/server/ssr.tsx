@@ -6,21 +6,22 @@ import { Provider } from 'react-redux'
 import { renderRoutes } from 'react-router-config'
 import { StaticRouter } from 'react-router-dom'
 
-import store from '../../client/redux/store'
-import routes from '../../client/routes'
+import { isProd } from '../universal/constants'
+import store from '../universal/redux/store'
+import routes from '../universal/routes'
 
 import * as fs from 'fs'
 import { template as _template } from 'lodash'
 
 const baseTemplate = fs.readFileSync('./src/index.template.html')
 const template = _template(baseTemplate.toString())
-const isProd = process.env.NODE_ENV === 'production'
 
 export default (req: Request, res: Response) => {
   const context: StaticRouterContext = {}
 
   let content
 
+  // SSR on production only
   if (isProd) {
     content = renderToString(
       <Provider store={store}>

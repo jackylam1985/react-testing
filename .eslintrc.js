@@ -1,3 +1,5 @@
+const isProd = require('./src/universal/constants').isProd
+
 module.exports = {
   parser: 'babel-eslint',
   parserOptions: {
@@ -27,6 +29,6 @@ module.exports = {
     // don't allow var, use let and const instead
     'no-var': 1,
     // allow debugger during development
-    'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
+    'no-debugger': isProd ? 2 : 0,
   },
 }

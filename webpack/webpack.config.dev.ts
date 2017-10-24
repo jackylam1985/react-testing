@@ -1,7 +1,7 @@
-const path = require('path')
-const webpack = require('webpack')
-const isProd = process.env.NODE_ENV === 'production'
-const _include = require('lodash/includes')
+import { includes as _includes } from 'lodash'
+import * as path from 'path'
+import * as webpack from 'webpack'
+
 const root = process.cwd()
 const src = path.join(root, 'src')
 
@@ -22,6 +22,7 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
+    modules: ['node_modules'],
   },
   module: {
     rules: [
@@ -33,7 +34,7 @@ module.exports = {
     ],
   },
   plugins: [
-    new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.optimize.OccurrenceOrderPlugin(true),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
@@ -41,7 +42,7 @@ module.exports = {
       filename: 'vendor.js',
       minChunks (module: any) {
         const context = module.context
-        return context && _include(context, path.join(__dirname, 'node_modules'))
+        return context && _includes(context, path.join(__dirname, 'node_modules'))
       },
     }),
     new webpack.DefinePlugin({
