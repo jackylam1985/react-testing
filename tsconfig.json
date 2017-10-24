@@ -12,7 +12,10 @@
     "target": "es5",
     "outDir": "public",
     "noImplicitAny": true,
-    "strictNullChecks": true
+    "strictNullChecks": false,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "allowJs": true
   },
   "include": [
     "./src/**/*"

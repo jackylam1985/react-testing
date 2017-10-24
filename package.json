@@ -4,8 +4,8 @@
   "author": "Jacky Lam",
   "version": "0.0.1",
   "scripts": {
-    "build:dev": "node_modules/.bin/webpack --config webpack.config.js --progress --hide-modules",
-    "start": "NODE_ENV=developement npm run build:dev && node_modules/.bin/ts-node src/server/index.ts",
+    "build:dev": "node_modules/.bin/webpack --config webpack/webpack.config.dev.ts --progress --hide-modules",
+    "start": "NODE_ENV=developement node_modules/.bin/ts-node src/server/index.ts",
     "eslint": "node_modules/.bin/eslint --format node_modules/eslint-friendly-formatter --ext .js,.jsx,.ts,.tsx .",
     "tslint": "node_modules/.bin/tslint -p tsconfig.json -c tslint.json 'src/**/*.{ts,tsx}'"
   },
@@ -24,6 +24,9 @@
     "@types/react-router-config": "^1.0.4",
     "@types/react-router-dom": "^4.0.8",
     "@types/redux-actions": "^2.2.2",
+    "@types/webpack": "^3.0.13",
+    "@types/webpack-dev-middleware": "^1.9.3",
+    "@types/webpack-hot-middleware": "^2.16.0",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.0.1",
@@ -39,6 +42,7 @@
     "eslint-plugin-html": "^4.0.0-alpha.1",
     "eslint-plugin-lodash": "^2.4.5",
     "eslint-plugin-react": "^7.4.0",
+    "react-hot-loader": "^3.1.1",
     "react-redux": "^5.0.6",
     "redux": "^3.7.2",
     "source-map-loader": "^0.2.2",
@@ -51,6 +55,7 @@
     "typescript": "^2.5.3",
     "webpack": "^3.6.0",
     "webpack-dev-middleware": "^1.12.0",
+    "webpack-hot-middleware": "^2.20.0",
     "webpack-merge": "^4.1.0",
     "webpack-node-externals": "^1.6.0"
   },

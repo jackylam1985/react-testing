@@ -14,17 +14,22 @@ import { template as _template } from 'lodash'
 
 const baseTemplate = fs.readFileSync('./src/index.template.html')
 const template = _template(baseTemplate.toString())
+const isProd = process.env.NODE_ENV === 'production'
 
 export default (req: Request, res: Response) => {
   const context: StaticRouterContext = {}
 
-  const content = renderToString(
-    <Provider store={store}>
-      <StaticRouter location={req.url} context={context}>
-        {renderRoutes(routes)}
-      </StaticRouter>
-    </Provider>,
-  )
+  let content
+
+  if (isProd) {
+    content = renderToString(
+      <Provider store={store}>
+        <StaticRouter location={req.url} context={context}>
+          {renderRoutes(routes)}
+        </StaticRouter>
+      </Provider>,
+    )
+  }
 
   if (context.status === 404) {
     res.status(404)
