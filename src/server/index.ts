@@ -7,6 +7,8 @@ import { isProd } from '../universal/constants'
 import setupDevMiddlewares from './setup/setup-dev-middlewares'
 import ssr from './ssr'
 
+import handler404 from './middlewares/404'
+
 const app = express()
 const port = appConfig.server.port
 const publicPath = path.join(__dirname, '..', '..', 'build')
@@ -18,6 +20,9 @@ if (!isProd) {
 
 app.use('/static', serveStatic(publicPath))
 app.get('*', ssr)
+
+// error handlers
+app.use(handler404)
 
 app.listen(port, (error: any) => {
   if (error) {
