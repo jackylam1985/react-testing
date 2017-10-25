@@ -1,6 +1,6 @@
 // App main configs
 export default {
   server: {
-    port: process.env.port || 8082,
+    port: process.env.port || 8080,
   },
 }

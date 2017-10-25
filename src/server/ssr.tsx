@@ -4,7 +4,7 @@ import * as React from 'react'
 import { renderToString } from 'react-dom/server'
 import { Provider } from 'react-redux'
 import { renderRoutes } from 'react-router-config'
-import { StaticRouter } from 'react-router-dom'
+import { StaticRouter, match } from 'react-router-dom'
 
 import { isProd } from '../universal/constants'
 import store from '../universal/redux/store'
@@ -19,22 +19,19 @@ const template = _template(baseTemplate.toString())
 export default (req: Request, res: Response) => {
   const context: StaticRouterContext = {}
 
-  let content
+  // Need to run this on dev too to get the context for correct 404 status code
+  let content = renderToString(
+    <Provider store={store}>
+      <StaticRouter location={req.url} context={context}>
+        {renderRoutes(routes)}
+      </StaticRouter>
+    </Provider>,
+  )
 
-  // SSR on production only
-  if (isProd) {
-    content = renderToString(
-      <Provider store={store}>
-        <StaticRouter location={req.url} context={context}>
-          {renderRoutes(routes)}
-        </StaticRouter>
-      </Provider>,
-    )
-  }
+  // SSR the content on production only
+  if (!isProd) { content = '' }
 
-  if (context.status === 404) {
-    res.status(404)
-  }
+  const html = template({ content })
 
-  res.status(200).send(template({ content }))
+  res.status(context.status || 200).send(html)
 }
