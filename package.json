@@ -4,8 +4,7 @@
   "author": "Jacky Lam",
   "version": "0.0.1",
   "scripts": {
-    "build:dev": "node_modules/.bin/webpack --config webpack/webpack.config.dev.ts --progress --hide-modules",
-    "start": "cross-env NODE_ENV=developement node_modules/.bin/ts-node src/server/index.ts",
+    "start": "cross-env NODE_ENV=developement node_modules/.bin/nodemon --exec 'node_modules/.bin/ts-node src/server/index.ts' --watch src/server/ -e js,jsx,ts,tsx",
     "clean": "node_modules/.bin/rimraf build",
     "eslint": "node_modules/.bin/eslint --format node_modules/eslint-friendly-formatter --ext .js,.jsx,.ts,.tsx .",
     "tslint": "node_modules/.bin/tslint -p tsconfig.json -c tslint.json 'src/**/*.{ts,tsx}'"
@@ -43,6 +42,7 @@
     "eslint-plugin-html": "^4.0.0-alpha.1",
     "eslint-plugin-lodash": "^2.4.5",
     "eslint-plugin-react": "^7.4.0",
+    "nodemon": "^1.12.1",
     "react-hot-loader": "^3.1.1",
     "react-redux": "^5.0.6",
     "redux": "^3.7.2",
