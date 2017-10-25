@@ -4,7 +4,7 @@ import * as React from 'react'
 import { renderToString } from 'react-dom/server'
 import { Provider } from 'react-redux'
 import { renderRoutes } from 'react-router-config'
-import { StaticRouter, match } from 'react-router-dom'
+import { StaticRouter } from 'react-router-dom'
 
 import { isProd } from '../universal/constants'
 import store from '../universal/redux/store'
