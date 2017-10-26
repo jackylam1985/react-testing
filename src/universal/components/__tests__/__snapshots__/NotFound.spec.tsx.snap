@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/NotFound renders 1`] = `
+<Unknown
+  status={404}
+>
+  <div>
+    Not found
+  </div>
+</Unknown>
+`;

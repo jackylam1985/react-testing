@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/Header renders 1`] = `
+<div>
+  <div>
+    <a
+      href="/"
+    />
+  </div>
+  <nav>
+    <ul>
+      <li>
+        <Link
+          replace={false}
+          to="/"
+        >
+          Home
+        </Link>
+      </li>
+      <li>
+        <Link
+          replace={false}
+          to="/node"
+        >
+          Node
+        </Link>
+      </li>
+    </ul>
+  </nav>
+</div>
+`;
